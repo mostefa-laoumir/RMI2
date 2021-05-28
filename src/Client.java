@@ -1,19 +1,18 @@
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.util.Scanner;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Client {
+public class Client extends Application {
 
-    public static void main(String[] args) {
-        try {
-            Registry registry = LocateRegistry.getRegistry("localhost", 22222);
-            IRemote objet = (IRemote) registry.lookup("objet-calculatrice");
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("donner equation:" );
-            String equation = scanner.next();
-            System.out.println("Resultat : "+objet.Calculatrice(equation));
-        } catch (Exception e) {
-            e.printStackTrace();
+        @Override
+        public void start(Stage primaryStage) throws Exception{
+            Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            primaryStage.setTitle("Application Repartie");
+            primaryStage.setScene(new Scene(root, 500, 500));
+            primaryStage.show();
         }
-    }
+    public static void main(String[] args) {
+            launch(args);  }
 }
