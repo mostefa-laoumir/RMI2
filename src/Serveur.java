@@ -19,6 +19,8 @@ public class Serveur {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
